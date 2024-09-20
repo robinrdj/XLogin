@@ -6,7 +6,7 @@ function App() {
   const [signed, setSigned] = useState(false);
   function handleSubmit(e){
     e.preventDefault();
-     if(userName=="user" && password=="password"){
+     if(userName==="user" && password==="password"){
       setSigned(true);
      }else{
       alert("Invalid Credentials");
@@ -16,9 +16,11 @@ function App() {
   }
   function handleInputChange(e){
       setUserName(e.target.value);
+      setSigned(false);
   }
   function handlePasswordChange(e){
      setPassword(e.target.value);
+     setSigned(false);
   }
   return (
     <div className="App">
@@ -28,11 +30,11 @@ function App() {
        <input type="text" value={userName} required onChange={handleInputChange} placeholder="username"/>
        <br></br>
        <label>Password:</label>
-       <input type="text" value={password} required onChange={handlePasswordChange} placeholder="password"/>
+       <input type="password" value={password} required onChange={handlePasswordChange} placeholder="password"/>
        <br></br>
        <button type="submit">Submit</button>
       </form>
-      {signed && <h1>"Welcome, user" </h1>}
+      {signed && <h1>Welcome, user</h1>}
     </div>
   );
 }
