@@ -9,6 +9,8 @@ function App() {
      if(userName=="user" && password=="password"){
       setSigned(true);
      }
+     throw new Error("Invalid Credentials");
+
   }
   function handleInputChange(e){
       setUserName(e.target.value);
