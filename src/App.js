@@ -8,9 +8,11 @@ function App() {
     e.preventDefault();
      if(userName=="user" && password=="password"){
       setSigned(true);
+     }else{
+      alert("Invalid Credentials");
+      throw new Error("Invalid Credentials");
      }
-     alert("Invalid Credentials");
-     throw new Error("Invalid Credentials");
+
   }
   function handleInputChange(e){
       setUserName(e.target.value);
