@@ -4,15 +4,18 @@ function App() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [signed, setSigned] = useState(false);
+  const [message,setMessage] = useState("");
   function handleSubmit(e){
     e.preventDefault();
+    
      if(userName==="user" && password==="password"){
-      setSigned(true);
+         setMessage("Welcome, user");
      }else{
-      alert("Invalid Credentials");
-      throw new Error("Invalid Credentials");
+      // alert("Invalid Credentials");
+      // throw new Error("Invalid Credentials");
+      setMessage("Invalid username or password");
      }
-
+     setSigned(true);
   }
   function handleInputChange(e){
       setUserName(e.target.value);
@@ -34,7 +37,7 @@ function App() {
        <br></br>
        <button type="submit">Submit</button>
       </form>
-      {signed && <h1>Welcome, user</h1>}
+      {signed && <h1>{message}</h1>}
     </div>
   );
 }
