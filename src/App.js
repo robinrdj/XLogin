@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from "react";
 
 function App() {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [signed, setSigned] = useState(false);
+  function handleSubmit(e){
+    e.preventDefault();
+     if(userName=="user" && password=="password"){
+      setSigned(true);
+     }
+  }
+  function handleInputChange(e){
+      setUserName(e.target.value);
+  }
+  function handlePasswordChange(e){
+     setPassword(e.target.value);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Login Page</h1>
+      <form onSubmit={handleSubmit}>
+        <label>Username:</label>
+       <input type="text" value={userName} required onChange={handleInputChange} placeholder="username"/>
+       <br></br>
+       <label>Password:</label>
+       <input type="text" value={password} required onChange={handlePasswordChange} placeholder="password"/>
+       <br></br>
+       <button type="submit">Submit</button>
+      </form>
+      {signed && <h1>"Welcome, user" </h1>}
     </div>
   );
 }
